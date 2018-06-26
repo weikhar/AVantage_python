@@ -4,7 +4,7 @@ import json
 import urllib.request
 
 QUERY_URL = "https://www.alphavantage.co/query?function={REQUEST_TYPE}&apikey={KEY}&symbol={SYMBOL}"
-API_KEY = "M3CLIFYJLP54DKZA"
+API_KEY = "YOUR API KEY"
 
 def _request(symbol, req_type):
     with urllib.request.urlopen(QUERY_URL.format(REQUEST_TYPE=req_type, KEY=API_KEY, SYMBOL=symbol)) as req:
