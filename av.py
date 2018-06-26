@@ -3,7 +3,7 @@
 # pip install pandas
 import os
 #print("Python3 script:", os.path.basename(__file__))
-YOUR_API_KEY = 'M3CLIFYJLP54DKZA'
+YOUR_API_KEY = 'YOUR API KEY'
 
 from pprint import pprint
 from alpha_vantage.timeseries import TimeSeries
