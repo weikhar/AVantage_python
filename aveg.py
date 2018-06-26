@@ -1,5 +1,5 @@
 # https://github.com/RomelTorres/av_example/blob/master/Alpha%20vantage%20examples.ipynb
-API_KEY = "M3CLIFYJLP54DKZA"
+API_KEY = "YOUR API KEY"
 #matplotlib inline
 from alpha_vantage.timeseries import TimeSeries
 from alpha_vantage.techindicators import TechIndicators
