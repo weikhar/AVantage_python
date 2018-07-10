@@ -30,9 +30,12 @@ def doRSP(index):
   RSP_fresh = RSP_Capital + RSP_bal
   RSP_units = rounddown100(RSP_fresh / RSP_close)
   RSP_total_units += RSP_units
-  RSP_bal = RSP_Capital - (RSP_units * RSP_close)
+  RSP_bal = round((RSP_Capital - (RSP_units * RSP_close)),2)
   print('[',RSP_cnt,'] > Fresh [', RSP_fresh, '] Add close: [', RSP_close, '] gets [', RSP_units, '] units + carry-over [', RSP_bal, '] and total units [',RSP_total_units,']')
   #print('done RSP')
+  if RSP_bal < 0: 
+  	print('ERROR, Balance is -ve')
+  	exit()
 
 #row_cnt = 1
 #FileName = 'z74.csv'
