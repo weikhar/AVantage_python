@@ -15,6 +15,7 @@ RSP_Capital = 1000
 RSP_units = 0
 RSP_bal = 0
 RSP_total_units = 0
+RSP_close = 0
 
 def rounddown100(x):
   return int(math.floor(x / 100.0)) * 100
@@ -24,13 +25,14 @@ def doRSP(index):
   global df
   global RSP_bal
   global RSP_total_units
+  global RSP_close
   do_month = False
   #RSP_close = df.loc[[index]]['Close']
   RSP_close = df.iloc[index]['Close']
   RSP_fresh = RSP_Capital + RSP_bal
   RSP_units = rounddown100(RSP_fresh / RSP_close)
   RSP_total_units += RSP_units
-  RSP_bal = round((RSP_Capital - (RSP_units * RSP_close)),2)
+  RSP_bal = round((RSP_fresh - (RSP_units * RSP_close)),2)
   print('[',RSP_cnt,'] > Fresh [', RSP_fresh, '] Add close: [', RSP_close, '] gets [', RSP_units, '] units + carry-over [', RSP_bal, '] and total units [',RSP_total_units,']')
   #print('done RSP')
   if RSP_bal < 0: 
@@ -50,6 +52,13 @@ def doRSP(index):
 #  except csv.Error as e:
 #    sys.exit('file {}, line {}: {}'.format(filename, reader.line_num, e))        
 
+def Results():
+  global RSP_cnt
+  global RSP_bal
+  global RSP_total_units
+  global RSP_Capital
+  global RSP_close
+  print('Total Fresh [', RSP_Capital * RSP_cnt, '] Units [', RSP_total_units, '] = Current Val [', RSP_total_units * RSP_close, '] Gain = [', (RSP_Capital * RSP_cnt)-(RSP_total_units * RSP_close), ']')
 
 def Main():
   print('Starting')
@@ -94,5 +103,6 @@ def Main():
         print('XXXXXXXXXXXXX')
     DayIdx += 1
   print('End')
+  Results()
 
 Main()
